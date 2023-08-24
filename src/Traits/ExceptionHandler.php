@@ -2,8 +2,20 @@
 
 namespace Retamayo\Absl\Traits;
 
+/**
+ * Trait ExceptionHandler
+ * 
+ * @package Retamayo\Absl\Traits
+ */
 trait ExceptionHandler
 {
+    /**
+     * Formats the exception and displays it
+     * 
+     * @param \Exception $e
+     * 
+     * @return void
+     */
     public function formatException($e)
     {
         if ($e instanceof \Exception) {

@@ -7,31 +7,73 @@ use Retamayo\Absl\Exceptions\CrudExecutionException;
 use Retamayo\Absl\Traits\Query;
 use Retamayo\Absl\Traits\ExceptionHandler;
 
+/**
+ * Class Crud
+ * 
+ * @package Retamayo\Absl\Classes
+ */
 class Crud
 {
+    /**
+     * @trait Query
+     * @trait ExceptionHandler
+     */
     use Query;
     use ExceptionHandler;
 
+    /**
+     * @var PDO $connection
+     * @var Table $table
+     */
     public function __construct(
         private \PDO $connection,
         private Table $table
     ) {}
 
-    public function create(array $data): void
+    /**
+     * Creates a new record on the current table.
+     * 
+     * @param array $data
+     * @param string|int|float|bool $primary
+     * 
+     * @return void
+     * 
+     * @throws CrudExecutionException
+     * @throws \PDOException
+     * @throws \Exception
+     */
+    public function create(array $data, string|int|float|bool $primary = null): void
     {
-        $keys = $this->extractKeysAndValues($data)["keys"];
-        $values = $this->extractKeysAndValues($data)["values"];
-        $query =  $this->insertQuery($this->table->name, $keys);
+        if (!is_null($primary)) {
+            array_unshift($this->table->columns, $this->table->primary);
+            array_unshift($data, $primary);
+        }
+        $query =  $this->insertQuery($this->table->name, $this->table->columns);
         $statement = $this->connection->prepare($query);
         try {
-            if (!$statement->execute($values)) {
-                throw new CrudExecutionException("Failed to exceute create query");
+            if (!$statement->execute(array_values($data))) {
+                throw new CrudExecutionException("Failed to execute create query");
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
+        } catch (\PDOException $e) {
+            $this->formatException($e);
+        } catch (\Exception $e) {
+            $this->formatException($e);
         }
     }
-
+    
+    /**
+     * Retrieves all records of the specified columns from the current table.
+     * 
+     * @param array $columns
+     * 
+     * @return array
+     * 
+     * @throws CrudExecutionException
+     * @throws \PDOException
+     * @throws \Exception
+     */
     public function list(array $columns): array
     {
         $query = $this->listQuery($this->table->name, $columns);
@@ -40,14 +82,32 @@ class Crud
             if ($statement->execute()) {
                 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
             } else {
-                throw new CrudExecutionException("Failed to exceute list query");
+                throw new CrudExecutionException("Failed to execute list query");
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } 
+        } catch (\PDOException $e) {
+            $this->formatException($e);
+        } catch (\Exception $e) {
+            $this->formatException($e);
+        }
         return $data;
     }
 
+
+    /**
+     * Retrieves a single record from the current table.
+     * 
+     * @param array $columns
+     * @param string $where
+     * @param string|int|float|bool $whereValue
+     * 
+     * @return array
+     * 
+     * @throws CrudExecutionException
+     * @throws \PDOException
+     * @throws \Exception
+     */
     public function listSingle(array $columns, string $where, string|int|float|bool $whereValue): array
     {
         $query = $this->listSingleQuery($this->table->name, $columns, $where);
@@ -56,38 +116,79 @@ class Crud
             if ($statement->execute([$whereValue])) {
                 $data = $statement->fetch(PDO::FETCH_ASSOC);
             } else {
-                throw new CrudExecutionException("Failed to exceute listSingle query");
+                throw new CrudExecutionException("Failed to execute listSingle query");
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } 
+        } catch (\PDOException $e) {
+            $this->formatException($e);
+        } catch (\Exception $e) {
+            $this->formatException($e);
+        }
         return $data;
     }
 
-    public function update(array $data, string $where, string|int|float|bool $whereValue): void
+
+    /**
+     * Updates a record on the current table.
+     * 
+     * @param array $data
+     * @param string $where
+     * @param string|int|float|bool $whereValue
+     * @param string|int|float|bool $primary
+     * 
+     * @return void
+     * 
+     * @throws CrudExecutionException
+     * @throws \PDOException
+     * @throws \Exception
+     */
+    public function update(array $data, string $where, string|int|float|bool $whereValue, string|int|float|bool $primary = null): void
     {
-        $keys = $this->extractKeysAndValues($data)["keys"];
-        $values = $this->extractKeysAndValues($data)["values"];
-        $query = $this->updateQuery($this->table->name, $keys, $where);
+        if (!is_null($primary)) {
+            array_unshift($this->table->columns, $this->table->primary);
+            array_unshift($data, $primary);
+        }
+        $query = $this->updateQuery($this->table->name, $this->table->columns, $where);
         $statement = $this->connection->prepare($query);
         try {
-            if (!$statement->execute([$values, $whereValue])) {
-                throw new CrudExecutionException("Failed to exceute update query");
+            if (!$statement->execute([...array_values($data), $whereValue])) {
+                throw new CrudExecutionException("Failed to execute update query");
             }
         } catch (CrudExecutionException $e) {
+            $this->formatException($e);
+        } catch (\PDOException $e) {
+            $this->formatException($e);
+        } catch (\Exception $e) {
             $this->formatException($e);
         }
     }
 
+    /**
+     * Deletes a record from the current table.
+     * 
+     * @param string $where
+     * @param string|int|float|bool $whereValue
+     * 
+     * @return void
+     * 
+     * @throws CrudExecutionException
+     * @throws \PDOException
+     * @throws \Exception
+     */
     public function delete(string $where, string|int|float|bool $whereValue): void
     {
         $query = $this->deleteQuery($this->table->name, $where);
         $statement = $this->connection->prepare($query);
         try {
             if (!$statement->execute([$whereValue])) {
-                throw new CrudExecutionException("Failed to exceute delete query");
+                throw new CrudExecutionException("Failed to execute delete query");
             }
         } catch (CrudExecutionException $e) {
+            $this->formatException($e);
+        } catch (\PDOException $e) {
+            $this->formatException($e);
+        } catch (\Exception $e) {
             $this->formatException($e);
         }
     }
