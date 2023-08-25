@@ -1,5 +1,5 @@
 vendor
 composer.lock
-index.php -f
+/index.php
 db.php
 tables.php
