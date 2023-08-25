@@ -75,14 +75,14 @@ trait QueryBuilder
     }
 
     /**
-     * Creates a select where query to search for a user.
+     * Creates a query that checks if a record exists.
      * 
      * @param string $table
      * @param string $where
      * 
      * @return string
      */
-    public function authQuery(string $table, string $where): string
+    public function existsQuery(string $table, string $where): string
     {
         return $query = "SELECT * FROM `$table` WHERE `$where` = ?;";
     }

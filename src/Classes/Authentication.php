@@ -44,7 +44,7 @@ class Authentication
      */
     public function authenticate(string $username, string $password): bool
     {
-        $query = $this->authQuery($this->table->name, $this->userColumn);
+        $query = $this->existsQuery($this->table->name, $this->userColumn);
         $statement = $this->connection->prepare($query);
         try {
             if (!$statement->execute([$username])) {

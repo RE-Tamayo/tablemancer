@@ -6,11 +6,11 @@ use Retamayo\Absl\Traits\QueryBuilder;
 use Retamayo\Absl\Traits\ExceptionHandler;
 
 /**
- * Class DataChecker
+ * Class Filter
  * 
  * @package Retamayo\Absl\Classes
  */
-class DataChecker
+class Filter
 {
      /**
      * @trait QueryBuilder

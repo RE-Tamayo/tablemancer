@@ -6,11 +6,11 @@ use Retamayo\Absl\Traits\QueryBuilder;
 use Retamayo\Absl\Traits\ExceptionHandler;
 
 /**
- * Class DataChecker
+ * Class JsonApi
  * 
  * @package Retamayo\Absl\Classes
  */
-class DataChecker
+class JsonApi
 {
      /**
      * @trait QueryBuilder
