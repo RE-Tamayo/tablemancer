@@ -69,11 +69,12 @@ class Facade
      * 
      * @see Crud
      */
-    public function list(string $table, array $columns): void
+    public function list(string $table, array $columns): array
     {
         $crud = new Crud($this->connection, $this->useTable($table));
-        print_r($crud->list($columns));
+        $data = $crud->list($columns);
         unset($crud);
+        return $data;
     }
 
     /**
@@ -81,11 +82,12 @@ class Facade
      * 
      * @see Crud
      */
-    public function listSingle(string $table, array $columns, string $where, string|int|float|bool $whereValue): void
+    public function listSingle(string $table, array $columns, string $where, string|int|float|bool $whereValue): array
     { 
         $crud = new Crud($this->connection, $this->useTable($table));
-        print_r($crud->listSingle($columns, $where, $whereValue));
+        $data = $crud->listSingle($columns, $where, $whereValue);
         unset($crud);
+        return $data;
     }
 
     /**

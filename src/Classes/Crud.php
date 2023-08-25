@@ -39,8 +39,6 @@ class Crud
      * @return void
      * 
      * @throws CrudExecutionException
-     * @throws \PDOException
-     * @throws \Exception
      */
     public function create(array $data, string|int|float|bool $primary = null): void
     {
@@ -56,10 +54,7 @@ class Crud
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } catch (\PDOException $e) {
-            $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
     }
 
@@ -71,8 +66,6 @@ class Crud
      * @return array
      * 
      * @throws CrudExecutionException
-     * @throws \PDOException
-     * @throws \Exception
      */
     public function list(array $columns): array
     {
@@ -81,17 +74,14 @@ class Crud
         try {
             if ($statement->execute()) {
                 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute list query");
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } catch (\PDOException $e) {
-            $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
-        return $data;
     }
 
 
@@ -105,8 +95,6 @@ class Crud
      * @return array
      * 
      * @throws CrudExecutionException
-     * @throws \PDOException
-     * @throws \Exception
      */
     public function listSingle(array $columns, string $where, string|int|float|bool $whereValue): array
     {
@@ -115,19 +103,15 @@ class Crud
         try {
             if ($statement->execute([$whereValue])) {
                 $data = $statement->fetch(PDO::FETCH_ASSOC);
+                return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute listSingle query");
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } catch (\PDOException $e) {
-            $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
-        return $data;
     }
-
 
     /**
      * Updates a record on the current table.
@@ -140,8 +124,6 @@ class Crud
      * @return void
      * 
      * @throws CrudExecutionException
-     * @throws \PDOException
-     * @throws \Exception
      */
     public function update(array $data, string $where, string|int|float|bool $whereValue, string|int|float|bool $primary = null): void
     {
@@ -157,10 +139,7 @@ class Crud
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } catch (\PDOException $e) {
-            $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
     }
 
@@ -173,8 +152,6 @@ class Crud
      * @return void
      * 
      * @throws CrudExecutionException
-     * @throws \PDOException
-     * @throws \Exception
      */
     public function delete(string $where, string|int|float|bool $whereValue): void
     {
@@ -186,10 +163,7 @@ class Crud
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);
-        } catch (\PDOException $e) {
-            $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
     }
 }

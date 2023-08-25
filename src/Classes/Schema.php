@@ -2,6 +2,9 @@
 
 namespace Retamayo\Absl\Classes;
 
+use Retamayo\Absl\Exceptions\TableException;
+use Retamayo\Absl\Traits\ExceptionHandler;
+
 /**
  * Class Schema
  * 
@@ -9,6 +12,11 @@ namespace Retamayo\Absl\Classes;
  */
 class Schema
 {
+    /**
+     * @trait ExceptionHandler
+     */
+    use ExceptionHandler;
+
     /**
      * @var Schema
      * @var string $currentTable
@@ -54,11 +62,15 @@ class Schema
      */
     public function useTable(string $name): Table
     {
-        if (array_key_exists($name, $this->tables)) {
-            $this->currentTable = $name;
-            return $this->tables[$this->currentTable];
-        } else {
-            throw new \Exception('Table not found');
+        try {
+            if (array_key_exists($name, $this->tables)) {
+                $this->currentTable = $name;
+                return $this->tables[$this->currentTable];
+            } else {
+                throw new TableException('Table not found');
+            }
+        } catch (TableException $e) {
+            $this->formatException($e);
             exit();
         }
     }

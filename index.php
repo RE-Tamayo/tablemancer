@@ -4,7 +4,7 @@
     include 'db.php';
     include 'tables.php';
 
-    // $absl->update('users', ["name" => "tsst", "age" => 20], "id", 67);
+    $absl->update('userds', ["name" => "tsst", "age" => 20], "id", 1);
     // echo "<br/>";
     // $absl->create('users', ["name" => "tesssst", "age" => 20]);
     // echo "<br/>";

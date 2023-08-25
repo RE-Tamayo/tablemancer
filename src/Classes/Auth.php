@@ -2,6 +2,7 @@
 
 namespace Retamayo\Absl\Classes;
 
+use Retamayo\Absl\Exceptions\AuthenticationException;
 use Retamayo\Absl\Traits\Query;
 use Retamayo\Absl\Traits\ExceptionHandler;
 
@@ -47,7 +48,7 @@ class Auth
         $statement = $this->connection->prepare($query);
         try {
             if (!$statement->execute([$username])) {
-                throw new \Exception("Failed to execute auth query");
+                throw new AuthenticationException("Failed to execute auth query");
             }
             $data = $statement->fetch(\PDO::FETCH_ASSOC);
             if (empty($data)) {
@@ -60,10 +61,9 @@ class Auth
                     return false;
                 }
             }
-        } catch (\PDOException $e) {
+        } catch (AuthenticationException $e) {
             $this->formatException($e);
-        } catch (\Exception $e) {
-            $this->formatException($e);
+            exit();
         }
     }
 
@@ -79,7 +79,7 @@ class Auth
     {
         try {
             if (empty($session)) {
-                throw new \Exception("Session data is empty");
+                throw new AuthenticationException("Session data is empty");
             } else {
                 foreach ($session as $id) {
                     foreach ($data as $key => $value) {
@@ -89,8 +89,9 @@ class Auth
                     }
                 }
             }
-        } catch (\Exception $e) {
+        } catch (AuthenticationException $e) {
             $this->formatException($e);
+            exit();
         }
     }
 }
