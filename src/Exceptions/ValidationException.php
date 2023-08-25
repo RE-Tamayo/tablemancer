@@ -3,11 +3,11 @@
 namespace Retamayo\Absl\Exceptions;
 
 /**
- * Class DataException
+ * Class ValidationException
  * 
  * @package Retamayo\Absl\Exceptions
  */
-class DataException extends \Exception
+class ValidationException extends \Exception
 {
     public function __construct(string $message)
     {

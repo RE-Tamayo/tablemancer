@@ -7,7 +7,7 @@ use Retamayo\Absl\Traits\ExceptionHandler;
 use Retamayo\Absl\Traits\QueryBuilder;
 
 /**
- * Class Auth
+ * Class Authentication
  * 
  * @package Retamayo\Absl\Classes
  */

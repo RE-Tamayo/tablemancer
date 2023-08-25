@@ -6,6 +6,7 @@ use Retamayo\Absl\Classes\Schema;
 use Retamayo\Absl\Classes\Table;
 use Retamayo\Absl\Classes\Crud;
 use Retamayo\Absl\Classes\Authentication;
+use Retamayo\Absl\Classes\Validation;
 
 /**
  * Class Facade
@@ -117,7 +118,7 @@ class Facade
     /**
      * Authenticates a user.
      * 
-     * @see Auth
+     * @see Authentication
      */
     public function authenticate(array $config, string $username, string $password): bool
     {
@@ -125,5 +126,44 @@ class Facade
         $isAuth = $auth->authenticate($username, $password);
         unset($auth);
         return $isAuth;
+    }
+
+    /**
+     * Checks if a record exists.
+     * 
+     * @see Validation
+     */
+    public function checkRecord(string $table, string $checkColumn, string|int|float|bool $checkValue): bool
+    {
+        $validation = new Validation($this->connection, $this->useTable($table));
+        $doesExists = $validation->checkRecord($checkColumn, $checkValue);
+        unset($validation);
+        return $doesExists;
+    }
+
+    /**
+     * Sanitizes a variable.
+     * 
+     * @see Validation
+     */
+    public function sanitizeVariable(string|int|float|bool $var): string|int|float|bool
+    {
+        $validation = new Validation(null, null);
+        $var = $validation->sanitizeVariable($var);
+        unset($validation);
+        return $var;
+    }
+
+    /**
+     * Sanitizes an array.
+     * 
+     * @see Validation
+     */
+    public function sanitizeArray(array $var): array
+    {
+        $validation = new Validation(null, null);
+        $arr = $validation->sanitizeArray($var);
+        unset($validation);
+        return $arr;
     }
 }

@@ -4,7 +4,7 @@
     include 'db.php';
     include 'tables.php';
 
-    $absl->update('users', ["name" => "tsst", "age" => 20], "id", 2);
+    // $absl->update('users', ["name" => "tsst", "age" => 20], "id", 2);
     // echo "<br/>";
     // $absl->create('users', ["name" => "tesssst", "age" => 20]);
     // echo "<br/>";
@@ -21,3 +21,32 @@
     // } else {
     //     echo "Not Authenticated";
     // }
+
+    // if ($absl->checkRecord("users", "id", 111)) {
+    //     echo "Record Exists";
+    // } else {
+    //     echo "Record Does Not Exist";
+    // }
+
+    $arr = [
+        "test1" => "<h1>Test1</h1>",
+        "test2" => "<h1>Test2</h1>",
+    ];
+
+    $var = "<h1>Test</h1>";
+
+    echo $var;
+
+    $var = $absl->sanitizeVariable($var);
+
+    echo $var;
+
+    print_r($arr);
+
+    $arr = $absl->sanitizeArray($arr);
+
+    print_r($arr);
+
+
+
+
