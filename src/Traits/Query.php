@@ -73,4 +73,17 @@ trait Query
     {
         return $query = "DELETE FROM `$table` WHERE `$where` = ?;";
     }
+
+    /**
+     * Creates a select where query to search for a user.
+     * 
+     * @param string $table
+     * @param string $where
+     * 
+     * @return string
+     */
+    public function authQuery(string $table, string $where): string
+    {
+        return $query = "SELECT * FROM `$table` WHERE `$where` = ?;";
+    }
 }

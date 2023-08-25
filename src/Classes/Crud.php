@@ -62,7 +62,7 @@ class Crud
             $this->formatException($e);
         }
     }
-    
+
     /**
      * Retrieves all records of the specified columns from the current table.
      * 

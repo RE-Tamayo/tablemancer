@@ -5,6 +5,7 @@ namespace Retamayo\Absl;
 use Retamayo\Absl\Classes\Schema;
 use Retamayo\Absl\Classes\Table;
 use Retamayo\Absl\Classes\Crud;
+use Retamayo\Absl\Classes\Auth;
 
 /**
  * Class Facade
@@ -109,5 +110,18 @@ class Facade
         $crud = new Crud($this->connection, $this->useTable($table));
         $crud->delete($where, $whereValue);
         unset($crud);
+    }
+
+    /**
+     * Authenticates a user.
+     * 
+     * @see Auth
+     */
+    public function authenticate(array $config, string $username, string $password): bool
+    {
+        $auth = new Auth($this->connection, $this->useTable($config['table']), $config['userColumn'], $config['tokenColumn'], $config['session']);
+        $isAuth = $auth->authenticate($username, $password);
+        unset($auth);
+        return $isAuth;
     }
 }
