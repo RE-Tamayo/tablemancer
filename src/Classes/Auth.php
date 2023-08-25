@@ -3,22 +3,22 @@
 namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Exceptions\AuthenticationException;
-use Retamayo\Absl\Traits\Query;
 use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\QueryBuilder;
 
 /**
  * Class Auth
  * 
  * @package Retamayo\Absl\Classes
  */
-class Auth
+class Authentication
 {
 
     /**
-     * @trait Query
+     * @trait QueryBuilder
      * @trait ExceptionHandler
      */
-    use Query;
+    use QueryBuilder;
     use ExceptionHandler;
 
     /**

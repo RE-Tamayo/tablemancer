@@ -4,7 +4,7 @@ namespace Retamayo\Absl\Classes;
 
 use PDO;
 use Retamayo\Absl\Exceptions\CrudExecutionException;
-use Retamayo\Absl\Traits\Query;
+use Retamayo\Absl\Traits\QueryBuilder;
 use Retamayo\Absl\Traits\ExceptionHandler;
 
 /**
@@ -15,10 +15,10 @@ use Retamayo\Absl\Traits\ExceptionHandler;
 class Crud
 {
     /**
-     * @trait Query
+     * @trait QueryBuilder
      * @trait ExceptionHandler
      */
-    use Query;
+    use QueryBuilder;
     use ExceptionHandler;
 
     /**

@@ -7,7 +7,7 @@ namespace Retamayo\Absl\Traits;
  * 
  * @package Retamayo\Absl\Traits
  */
-trait Query
+trait QueryBuilder
 {
     /**
      * Creates an insert query
