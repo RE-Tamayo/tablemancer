@@ -73,6 +73,6 @@ Contributions are welcome! If you encounter issues or have suggestions for impro
 
 ## Contact
 
-If you have questions or need assistance, you can reach us at [rosas.emerjoe.tamayo@gmail.com](mailto:rosas.emerjoe.tamayo@gmail.com).
+If you have questions or need assistance, you can reach me at [rosas.emerjoe.tamayo@gmail.com](mailto:rosas.emerjoe.tamayo@gmail.com).
 
 Happy coding!
