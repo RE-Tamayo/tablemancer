@@ -39,11 +39,11 @@ class Crud
      * @param array $data
      * @param string|int|float|bool $primary
      * 
-     * @return void
+     * @return string
      * 
      * @throws CrudExecutionException
      */
-    public function create(array $data, string|int|float|bool $primary = null): void
+    public function create(array $data, string|int|float|bool $primary = null): string
     {
         if (!is_null($primary)) {
             array_unshift($this->table->columns, $this->table->primary);
@@ -54,6 +54,8 @@ class Crud
         try {
             if (!$statement->execute(array_values($data))) {
                 throw new CrudExecutionException("Failed to execute create query");
+            } else {
+                return $this->connection->lastInsertId();
             }
         } catch (CrudExecutionException $e) {
             $this->formatException($e);

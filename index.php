@@ -57,6 +57,55 @@
 
     // dd($absl->paginate(2, 1, $absl->search("user", $absl->list("acc", []))));
 
+    // $createJson = json_encode([
+    //     "table" => "users",
+    //     "data" => [
+    //         "name" => "tesssstcreate",
+    //         "age" => 200
+    //     ],
+    //     "primaryValue" => null
+    // ]);
+
+    // $absl->createJson($createJson);
+
+
+    // $listJson = json_encode([
+    //     "table" => "users",
+    //     "columns" => []
+    // ]);
+
+    // dd($absl->listJson($listJson));
+
+    // $listSingleJson = json_encode([
+    //     "table" => "users",
+    //     "columns" => [],
+    //     "where" => "id",
+    //     "whereValue" => 2
+    // ]);
+
+    // dd($absl->listSingleJson($listSingleJson));
+
+    // $listJson = json_encode([
+    //     "table" => "users",
+    //     "data" => [
+    //         "name" => "updated",
+    //         "age" => 200
+    //     ],
+    //     "where" => "id",
+    //     "whereValue" => 2,
+    //     "primaryValue" => null
+    // ]);
+
+    // $absl->updateJson($listJson);
+
+    // $deleteJson = json_encode([
+    //     "table" => "users",
+    //     "where" => "id",
+    //     "whereValue" => 5,
+    // ]);
+
+    // $absl->deleteJson($deleteJson);
+
 
 
 

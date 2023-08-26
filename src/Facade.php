@@ -8,6 +8,7 @@ use Retamayo\Absl\Classes\Crud;
 use Retamayo\Absl\Classes\Authentication;
 use Retamayo\Absl\Classes\Validation;
 use Retamayo\Absl\Classes\Filter;
+use Retamayo\Absl\Classes\JsonApi;
 
 /**
  * Class Facade
@@ -59,11 +60,12 @@ class Facade
      * 
      * @see Crud
      */
-    public function create(string $table, array $data, string|int|float|bool $primary = null): void
+    public function create(string $table, array $data, string|int|float|bool $primary = null): string
     {
         $crud = new Crud($this->connection, $this->useTable($table));
-        $crud->create($data, $primary);
+        $lastId = $crud->create($data, $primary);
         unset($crud);
+        return $lastId;
     }
 
     /**
@@ -176,6 +178,7 @@ class Facade
     public function search(string|int|float|bool $searchQuery, array $data): array
     {
         $filter = new Filter();
+        unset($filter);
         return $filter->search($searchQuery, $data);
     }
 
@@ -187,6 +190,75 @@ class Facade
     public function paginate(int $page, int $perPage, array $data): array
     {
         $filter = new Filter();
+        unset($filter);
         return $filter->paginate($page, $perPage, $data);
+    }
+
+    /**
+     * Creates a new record on the current table, takes a JSON string.
+     * 
+     * @see JsonApi
+     */
+    public function createJson(string $json): string
+    {
+        $jsonData = json_decode($json, true);
+        $api = new JsonApi($this->connection, $this->useTable($jsonData['table']));
+        $lastId = $api->createJson($json);
+        unset($api);
+        return $lastId;
+    }
+
+    /**
+     * Lists all records on the current table, takes a JSON string.
+     * 
+     * @see JsonApi
+     */
+    public function listJson(string $json): string
+    {
+        $jsonData = json_decode($json, true);
+        $api = new JsonApi($this->connection, $this->useTable($jsonData['table']));
+        $data = $api->listJson($json);
+        unset($api);
+        return $data;
+    }
+
+    /**
+     * Lists a single record on the current table, takes a JSON string.
+     * 
+     * @see JsonApi
+     */
+    public function listSingleJson(string $json): string
+    {
+        $jsonData = json_decode($json, true);
+        $api = new JsonApi($this->connection, $this->useTable($jsonData['table']));
+        $data = $api->listSingleJson($json);
+        unset($api);
+        return $data;
+    }
+
+    /**
+     * Updates a record on the current table, takes a JSON string.
+     * 
+     * @see JsonApi
+     */
+    public function updateJson(string $json): void
+    {
+        $jsonData = json_decode($json, true);
+        $api = new JsonApi($this->connection, $this->useTable($jsonData['table']));
+        $api->updateJson($json);
+        unset($api);
+    }
+
+    /**
+     * Deletes a record on the current table, takes a JSON string.
+     * 
+     * @see JsonApi
+     */
+    public function deleteJson(string $json): void
+    {
+        $jsonData = json_decode($json, true);
+        $api = new JsonApi($this->connection, $this->useTable($jsonData['table']));
+        $api->deleteJson($json);
+        unset($api);
     }
 }
