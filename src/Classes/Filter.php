@@ -4,7 +4,7 @@ namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Exceptions\FilterException;
 use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 
 /**
  * Class Filter
@@ -15,10 +15,10 @@ class Filter
 {
      /**
      * @trait QueryBuilder
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
      */
     use QueryBuilder;
-    use ExceptionHandler;
+    use ExceptionFormatter;
 
     /**
      * @var PDO $connection

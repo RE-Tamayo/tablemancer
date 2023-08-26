@@ -5,7 +5,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Retamayo\\Absl\\": "src/"
+            "Retamayo\\Absl\\": "src/",
+            "Retamayo\\Absl\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -23,5 +24,9 @@
         "ext-json": "*",
         "ext-curl": "*",
         "ext-simplexml": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.3",
+        "mockery/mockery": "^1.6"
     }
 }

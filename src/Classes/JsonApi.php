@@ -3,7 +3,7 @@
 namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 
 /**
  * Class JsonApi
@@ -14,10 +14,10 @@ class JsonApi
 {
      /**
      * @trait QueryBuilder
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
      */
     use QueryBuilder;
-    use ExceptionHandler;
+    use ExceptionFormatter;
 
     /**
      * @var PDO $connection

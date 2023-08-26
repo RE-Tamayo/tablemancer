@@ -3,7 +3,7 @@
 namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 use Retamayo\Absl\Exceptions\ValidationException;
 
 /**
@@ -15,10 +15,10 @@ class Validation
 {
      /**
      * @trait QueryBuilder
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
      */
     use QueryBuilder;
-    use ExceptionHandler;
+    use ExceptionFormatter;
 
     /**
      * @var ?PDO $connection

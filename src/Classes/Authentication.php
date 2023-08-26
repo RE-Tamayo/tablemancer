@@ -3,7 +3,7 @@
 namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Exceptions\AuthenticationException;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 use Retamayo\Absl\Traits\QueryBuilder;
 
 /**
@@ -16,10 +16,10 @@ class Authentication
 
     /**
      * @trait QueryBuilder
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
      */
     use QueryBuilder;
-    use ExceptionHandler;
+    use ExceptionFormatter;
 
     /**
      * @var PDO $connection

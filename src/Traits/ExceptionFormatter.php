@@ -3,11 +3,11 @@
 namespace Retamayo\Absl\Traits;
 
 /**
- * Trait ExceptionHandler
+ * Trait ExceptionFormatter
  * 
  * @package Retamayo\Absl\Traits
  */
-trait ExceptionHandler
+trait ExceptionFormatter
 {
     /**
      * Formats the exception and displays it

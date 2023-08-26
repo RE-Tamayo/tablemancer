@@ -3,7 +3,7 @@
 namespace Retamayo\Absl\Classes;
 
 use Retamayo\Absl\Exceptions\TableException;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 
 /**
  * Class Schema
@@ -13,9 +13,9 @@ use Retamayo\Absl\Traits\ExceptionHandler;
 class Schema
 {
     /**
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
      */
-    use ExceptionHandler;
+    use ExceptionFormatter;
 
     /**
      * @var Schema

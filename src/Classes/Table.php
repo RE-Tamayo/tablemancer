@@ -17,6 +17,7 @@ class Table
     public function __construct(
         public string $name,
         public array $columns,
-        public string $primary
+        public string $primary,
+        public array $sensitive
     ) {}
 }

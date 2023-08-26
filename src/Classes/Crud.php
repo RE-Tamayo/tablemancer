@@ -5,7 +5,8 @@ namespace Retamayo\Absl\Classes;
 use PDO;
 use Retamayo\Absl\Exceptions\CrudExecutionException;
 use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionHandler;
+use Retamayo\Absl\Traits\SensitiveDataMiddleware;
+use Retamayo\Absl\Traits\ExceptionFormatter;
 
 /**
  * Class Crud
@@ -16,10 +17,12 @@ class Crud
 {
     /**
      * @trait QueryBuilder
-     * @trait ExceptionHandler
+     * @trait ExceptionFormatter
+     * @trait SensitiveDataMiddleware
      */
     use QueryBuilder;
-    use ExceptionHandler;
+    use SensitiveDataMiddleware;
+    use ExceptionFormatter;
 
     /**
      * @var PDO $connection
@@ -74,6 +77,7 @@ class Crud
         try {
             if ($statement->execute()) {
                 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $data = $this->filterSensitiveData($this->table->sensitive, $data);
                 return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute list query");
@@ -103,6 +107,7 @@ class Crud
         try {
             if ($statement->execute([$whereValue])) {
                 $data = $statement->fetch(PDO::FETCH_ASSOC);
+                $data = $this->filterSensitiveData($this->table->sensitive, $data);
                 return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute listSingle query");

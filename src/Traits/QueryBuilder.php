@@ -31,7 +31,12 @@ trait QueryBuilder
      * @return string
      */
     public function listQuery(string $table, array $columns): string {
-        return $query = "SELECT `" . rtrim(implode("`, `", $columns), ",") . "` FROM `$table`;";
+        if (count($columns) < 1) {
+            $query = "SELECT * FROM `$table`;";
+        } else {
+            $query = "SELECT `" . rtrim(implode("`, `", $columns), ",") . "` FROM `$table`;";
+        }
+        return $query;
     }
 
     /**
@@ -44,7 +49,12 @@ trait QueryBuilder
      * @return string
      */
     public function listSingleQuery(string $table, array $columns, string $where): string {
-        return $query = "SELECT `" . rtrim(implode("`, `", $columns), ",") . "` FROM `$table` WHERE `$where` = ?;";
+        if (count($columns) < 1) {
+            $query = "SELECT * FROM `$table` WHERE `$where` = ?;";
+        } else {
+            $query = "SELECT `" . rtrim(implode("`, `", $columns), ",") . "` FROM `$table` WHERE `$where` = ?;";
+        }
+        return $query;
     }
 
     /**
