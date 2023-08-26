@@ -36,6 +36,8 @@ class Validation
      * @param string|int|float|bool $checkValue
      * 
      * @return bool
+     * 
+     * @throws ValidationException
      */
     public function checkRecord(string $checkColumn, string|int|float|bool $checkValue): bool
     {
@@ -45,8 +47,8 @@ class Validation
             if (!$statement->execute([$checkValue])) {
                 throw new ValidationException("Failed to execute check query");
             }
-            $data = $statement->fetch(\PDO::FETCH_ASSOC);
-            if (empty($data)) {
+            $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            if (count($data) > 1) {
                 return false;
             } else {
                 return true;

@@ -41,6 +41,8 @@ class Authentication
      * @param string $password
      * 
      * @return bool
+     * 
+     * @throws AuthenticationException
      */
     public function authenticate(string $username, string $password): bool
     {

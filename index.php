@@ -53,6 +53,10 @@
 
     // print_r($arr);
 
+    // dd($absl->search("user", $absl->list("acc", [])));
+
+    // dd($absl->paginate(2, 1, $absl->search("user", $absl->list("acc", []))));
+
 
 
 

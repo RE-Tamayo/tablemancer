@@ -20,25 +20,69 @@ class Filter
     use QueryBuilder;
     use ExceptionFormatter;
 
-    /**
-     * @var PDO $connection
-     * @var Table $table
-     */
-    public function __construct(
-        private \PDO $connection,
-        private Table $table
-    ) {}
+    public function __construct() {}
 
-    public function filter(string $filterColumn, string|int|float|bool $filterValue, string $filterOrder = "ASC", array $selectedColumns = []): void
+    /**
+     * Searches for records.
+     * 
+     * @param string|int|float|bool $searchQuery
+     * @param array $data
+     * 
+     * @return array
+     * 
+     * @throws FilterException
+     */
+    public function search(string|int|float|bool $searchQuery, array $data): array
     {
-        if ($filterOrder == "DESC" || $filterOrder == "ASC") {
-            throw new FilterException("Invalid filter order");
+        try {
+            $results = [];
+            if (empty($data)) {
+                throw new FilterException("No data to search");
+            } else {
+                foreach ($data as $row) {
+                    foreach ($row as $key => $value) {
+                        if (preg_match("/$searchQuery/i", $value)) {
+                            $results[] = $row;
+                        }
+                    }
+                }
+            } 
+            return $results;
+        } catch (FilterException $e) {
+            $this->formatException($e);
+            exit();
         }
-        if ($selectedColumns == [] || empty($selectedColumns)) {
-            $selectedColumns = "*";
-        } else {
-            $selectedColumns = rtrim(implode(", ", $selectedColumns), ", ");
+    }
+
+    /**
+     * Paginates records.
+     * 
+     * @param int $page
+     * @param int $perPage
+     * @param array $data
+     * 
+     * @return array
+     * 
+     * @throws FilterException
+     */
+    public function paginate(int $page, int $perPage, array $data): array
+    {
+        try {
+            $total = count($data);
+            if ($total <= 0) {
+                throw new FilterException("No data to paginate");
+            } else {
+                $totalPages = ceil($total / $perPage);
+                $page = max(1, min($page, $totalPages));
+                $startIndex = ($page - 1) * $perPage;
+                $pagedData = array_slice($data, $startIndex, $perPage);
+                return $pagedData;
+            }
+        } catch (FilterException $e) {
+            $this->formatException($e);
+            exit();
         }
+        
     }
 
 }

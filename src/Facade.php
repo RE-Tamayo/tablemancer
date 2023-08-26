@@ -7,6 +7,7 @@ use Retamayo\Absl\Classes\Table;
 use Retamayo\Absl\Classes\Crud;
 use Retamayo\Absl\Classes\Authentication;
 use Retamayo\Absl\Classes\Validation;
+use Retamayo\Absl\Classes\Filter;
 
 /**
  * Class Facade
@@ -165,5 +166,27 @@ class Facade
         $arr = $validation->sanitizeArray($var);
         unset($validation);
         return $arr;
+    }
+
+    /**
+     * Searches for records.
+     * 
+     * @see Filter
+     */
+    public function search(string|int|float|bool $searchQuery, array $data): array
+    {
+        $filter = new Filter();
+        return $filter->search($searchQuery, $data);
+    }
+
+    /**
+     * Paginates records.
+     * 
+     * @see Filter
+     */
+    public function paginate(int $page, int $perPage, array $data): array
+    {
+        $filter = new Filter();
+        return $filter->paginate($page, $perPage, $data);
     }
 }

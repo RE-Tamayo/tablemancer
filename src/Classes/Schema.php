@@ -59,6 +59,8 @@ class Schema
      * @param string $name
      * 
      * @return Table
+     * 
+     * @throws TableException
      */
     public function useTable(string $name): Table
     {
