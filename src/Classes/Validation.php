@@ -70,7 +70,7 @@ class Validation
     {
         $type = gettype($var);
         $var = match ($type) {
-            "string" => strip_tags(htmlspecialchars(htmlentities($var))),
+            "string" => trim(htmlentities(strip_tags(preg_replace('/[^a-zA-Z0-9_]/', '', $var)), ENT_QUOTES, 'UTF-8')),
             "integer" => (int) $var,
             "double" => (float) $var,
             "boolean" => (bool) $var,
