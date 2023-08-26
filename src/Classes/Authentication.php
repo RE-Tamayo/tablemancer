@@ -1,15 +1,15 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
-use Retamayo\Absl\Exceptions\AuthenticationException;
-use Retamayo\Absl\Traits\ExceptionFormatter;
-use Retamayo\Absl\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Exceptions\AuthenticationException;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
 
 /**
  * Class Authentication
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Authentication
 {

@@ -10,14 +10,14 @@
         echo "</pre>";
     }
 
-    // $absl->update('users', ["name" => "tsst", "age" => 20], "id", 2);
-    // echo "<br/>";
-    // $absl->create('users', ["name" => "tesssst", "age" => 20]);
-    // echo "<br/>";
-    // $absl->delete('users', "id", 1);
-    // echo "<br/>";
+    // $absl->update('users', ["name" => "tablemancer", "age" => 30], "id", 8);
+
+    // $absl->create('users', ["name" => "tablemancer", "age" => 2000]);
+
+    // $absl->delete('users', "id", 2);
+
     // dd($absl->list('acc', []));
-    // echo "<br/>";
+
     // dd($absl->listSingle('acc', ["username", "password"], "id", 2));
 
     // if(
@@ -28,7 +28,7 @@
     //     echo "Not Authenticated";
     // }
 
-    // if ($absl->checkRecord("users", "id", 111)) {
+    // if ($absl->checkRecord("users", "id", 8)) {
     //     echo "Record Exists";
     // } else {
     //     echo "Record Does Not Exist";
@@ -53,9 +53,9 @@
 
     // print_r($arr);
 
-    // dd($absl->search("user", $absl->list("acc", [])));
+    // dd($absl->search("user3", $absl->list("acc", [])));
 
-    // dd($absl->paginate(2, 1, $absl->search("user", $absl->list("acc", []))));
+    // dd($absl->paginate(1, 1, $absl->search("user", $absl->list("acc", []))));
 
     // $createJson = json_encode([
     //     "table" => "users",
@@ -80,7 +80,7 @@
     //     "table" => "users",
     //     "columns" => [],
     //     "where" => "id",
-    //     "whereValue" => 2
+    //     "whereValue" => 8
     // ]);
 
     // dd($absl->listSingleJson($listSingleJson));
@@ -92,7 +92,7 @@
     //         "age" => 200
     //     ],
     //     "where" => "id",
-    //     "whereValue" => 2,
+    //     "whereValue" => 9,
     //     "primaryValue" => null
     // ]);
 
@@ -101,7 +101,7 @@
     // $deleteJson = json_encode([
     //     "table" => "users",
     //     "where" => "id",
-    //     "whereValue" => 5,
+    //     "whereValue" => 4,
     // ]);
 
     // $absl->deleteJson($deleteJson);

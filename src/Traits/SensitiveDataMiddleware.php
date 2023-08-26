@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Traits;
+namespace Retamayo\Tablemancer\Traits;
 
 /**
  * Trait SensitiveDataMiddleware
  * 
- * @package Retamayo\Absl\Traits
+ * @package Retamayo\Tablemancer\Traits
  */
 trait SensitiveDataMiddleware
 {

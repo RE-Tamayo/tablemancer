@@ -1,12 +1,12 @@
 {
-    "name": "retamayo/absl",
-    "description": "Absl (PHP Database Abstraction Library) is a lightweight and flexible library designed to simplify database operations in PHP applications. It provides a convenient interface for interacting with various database systems using the PHP Data Objects (PDO) extension.",
+    "name": "retamayo/tablemancer",
+    "description": "A PHP library for efficient database table management, including CRUD operations, JSON data handling, and security features.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Retamayo\\Absl\\": "src/",
-            "Retamayo\\Absl\\Tests\\": "tests/"
+            "Retamayo\\Tablemancer\\": "src/",
+            "Retamayo\\Tablemancer\\Tests\\": "tests/"
         }
     },
     "authors": [

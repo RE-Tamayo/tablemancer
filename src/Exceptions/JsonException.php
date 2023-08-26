@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Exceptions;
+namespace Retamayo\Tablemancer\Exceptions;
 
 /**
  * Class JsonException
  * 
- * @package Retamayo\Absl\Exceptions
+ * @package Retamayo\Tablemancer\Exceptions
  */
 class JsonException extends \Exception
 {

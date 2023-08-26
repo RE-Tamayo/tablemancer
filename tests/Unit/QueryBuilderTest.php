@@ -1,9 +1,9 @@
 <?php
 
-namespace Retamayo\Absl\Tests\Unit;
+namespace Retamayo\Tablemancer\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Retamayo\Absl\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
 
 /**
  * Query Builder Test

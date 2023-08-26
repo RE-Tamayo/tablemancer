@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Exceptions;
+namespace Retamayo\Tablemancer\Exceptions;
 
 /**
  * Class FilterException
  * 
- * @package Retamayo\Absl\Exceptions
+ * @package Retamayo\Tablemancer\Exceptions
  */
 class FilterException extends \Exception
 {

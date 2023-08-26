@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Exceptions;
+namespace Retamayo\Tablemancer\Exceptions;
 
 /**
  * Class ValidationException
  * 
- * @package Retamayo\Absl\Exceptions
+ * @package Retamayo\Tablemancer\Exceptions
  */
 class ValidationException extends \Exception
 {

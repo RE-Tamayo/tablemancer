@@ -1,15 +1,15 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
-use Retamayo\Absl\Exceptions\FilterException;
-use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Exceptions\FilterException;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
 
 /**
  * Class Filter
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Filter
 {

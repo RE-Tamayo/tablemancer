@@ -1,14 +1,14 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
-use Retamayo\Absl\Exceptions\TableException;
-use Retamayo\Absl\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Exceptions\TableException;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
 
 /**
  * Class Schema
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Schema
 {

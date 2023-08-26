@@ -1,16 +1,16 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
-use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionFormatter;
-use Retamayo\Absl\Exceptions\JsonException;
-use Retamayo\Absl\Traits\SensitiveDataMiddleware;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Exceptions\JsonException;
+use Retamayo\Tablemancer\Traits\SensitiveDataMiddleware;
 
 /**
  * Class JsonApi
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class JsonApi
 {

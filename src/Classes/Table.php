@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
 /**
  * Class Table
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Table
 {

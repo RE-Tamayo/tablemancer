@@ -1,9 +1,9 @@
 <?php
 
-namespace Retamayo\Absl\Tests\Unit;
+namespace Retamayo\Tablemancer\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Retamayo\Absl\Classes\Filter;
+use Retamayo\Tablemancer\Classes\Filter;
 
 /**
  * Filter Test

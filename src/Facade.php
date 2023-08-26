@@ -1,19 +1,19 @@
 <?php
 
-namespace Retamayo\Absl;
+namespace Retamayo\Tablemancer;
 
-use Retamayo\Absl\Classes\Schema;
-use Retamayo\Absl\Classes\Table;
-use Retamayo\Absl\Classes\Crud;
-use Retamayo\Absl\Classes\Authentication;
-use Retamayo\Absl\Classes\Validation;
-use Retamayo\Absl\Classes\Filter;
-use Retamayo\Absl\Classes\JsonApi;
+use Retamayo\Tablemancer\Classes\Schema;
+use Retamayo\Tablemancer\Classes\Table;
+use Retamayo\Tablemancer\Classes\Crud;
+use Retamayo\Tablemancer\Classes\Authentication;
+use Retamayo\Tablemancer\Classes\Validation;
+use Retamayo\Tablemancer\Classes\Filter;
+use Retamayo\Tablemancer\Classes\JsonApi;
 
 /**
  * Class Facade
  * 
- * @package Retamayo\Absl 
+ * @package Retamayo\Tablemancer 
  */
 class Facade
 {
@@ -178,8 +178,9 @@ class Facade
     public function search(string|int|float|bool $searchQuery, array $data): array
     {
         $filter = new Filter();
+        $result = $filter->search($searchQuery, $data);
         unset($filter);
-        return $filter->search($searchQuery, $data);
+        return $result;
     }
 
     /**
@@ -190,8 +191,9 @@ class Facade
     public function paginate(int $page, int $perPage, array $data): array
     {
         $filter = new Filter();
+        $result = $filter->paginate($page, $perPage, $data);
         unset($filter);
-        return $filter->paginate($page, $perPage, $data);
+        return $result;
     }
 
     /**

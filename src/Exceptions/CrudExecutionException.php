@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Exceptions;
+namespace Retamayo\Tablemancer\Exceptions;
 
 /**
  * Class CrudExecutionException
  * 
- * @package Retamayo\Absl\Exceptions
+ * @package Retamayo\Tablemancer\Exceptions
  */
 class CrudExecutionException extends \Exception
 {

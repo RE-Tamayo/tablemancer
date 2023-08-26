@@ -1,15 +1,15 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
-use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\ExceptionFormatter;
-use Retamayo\Absl\Exceptions\ValidationException;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Exceptions\ValidationException;
 
 /**
  * Class Validation
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Validation
 {
@@ -48,10 +48,10 @@ class Validation
                 throw new ValidationException("Failed to execute check query");
             }
             $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
-            if (count($data) > 1) {
-                return false;
-            } else {
+            if (count($data) >= 1) {
                 return true;
+            } else {
+                return false;
             }
         } catch (ValidationException $e) {
             $this->formatException($e);

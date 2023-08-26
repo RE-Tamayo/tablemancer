@@ -1,11 +1,11 @@
 <?php
 
-namespace Retamayo\Absl\Traits;
+namespace Retamayo\Tablemancer\Traits;
 
 /**
  * Trait ExceptionFormatter
  * 
- * @package Retamayo\Absl\Traits
+ * @package Retamayo\Tablemancer\Traits
  */
 trait ExceptionFormatter
 {

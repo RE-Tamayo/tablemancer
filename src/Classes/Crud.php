@@ -1,17 +1,17 @@
 <?php
 
-namespace Retamayo\Absl\Classes;
+namespace Retamayo\Tablemancer\Classes;
 
 use PDO;
-use Retamayo\Absl\Exceptions\CrudExecutionException;
-use Retamayo\Absl\Traits\QueryBuilder;
-use Retamayo\Absl\Traits\SensitiveDataMiddleware;
-use Retamayo\Absl\Traits\ExceptionFormatter;
+use Retamayo\Tablemancer\Exceptions\CrudExecutionException;
+use Retamayo\Tablemancer\Traits\QueryBuilder;
+use Retamayo\Tablemancer\Traits\SensitiveDataMiddleware;
+use Retamayo\Tablemancer\Traits\ExceptionFormatter;
 
 /**
  * Class Crud
  * 
- * @package Retamayo\Absl\Classes
+ * @package Retamayo\Tablemancer\Classes
  */
 class Crud
 {
