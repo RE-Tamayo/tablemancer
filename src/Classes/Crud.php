@@ -77,7 +77,7 @@ class Crud
         try {
             if ($statement->execute()) {
                 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-                $data = $this->filterSensitiveData($this->table->sensitive, $data);
+                $data = $this->filterSensitiveData($this->table->sensitive, $data, "2D");
                 return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute list query");
@@ -107,7 +107,7 @@ class Crud
         try {
             if ($statement->execute([$whereValue])) {
                 $data = $statement->fetch(PDO::FETCH_ASSOC);
-                $data = $this->filterSensitiveData($this->table->sensitive, $data);
+                $data = $this->filterSensitiveData($this->table->sensitive, $data, "1D");
                 return $data;
             } else {
                 throw new CrudExecutionException("Failed to execute listSingle query");

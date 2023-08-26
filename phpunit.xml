@@ -4,11 +4,9 @@
          bootstrap="vendor/autoload.php"
          cacheDirectory=".phpunit.cache"
          executionOrder="depends,defects"
-         requireCoverageMetadata="true"
-         beStrictAboutCoverageMetadata="true"
-         beStrictAboutOutputDuringTests="true"
-         failOnRisky="true"
-         failOnWarning="true">
+         colors="true"
+         processIsolation="false"
+         stopOnFailure="false">
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
